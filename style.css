@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root{
+
+  /* Colors */
+  --color-bg:hsl(217, 54%, 11%);
+  --color-cardbg: hsl(216, 50%, 16%);
+  --color-line: hsl(215, 32%, 27%);
+  --color-White: hsl(0, 0%, 100%);
+
+  /* Spacing */
+  --spacing-tiny: .5rem;
+  --spacing-small: 1rem;
+  --spacing-med: 1.5rem;
+  --spacing-ultra: 4rem;
+}
+
+html,body{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: var(--color-bg);
+  font-family:'Outfit', Courier, monospace;
+  font-size: 16px;
+}
+
+main{
+  height: 100%;
+}
+
+h2{
+  padding: 0;
+  margin: 0;
+}
+
+.card{
+  background-color: var(--color-cardbg);
+  margin: var(--spacing-ultra) var(--spacing-med);
+  border-radius: 15px;
+  padding: var(--spacing-med);
+  display: grid;
+  gap: var(--spacing-med);
+  color: var(--color-line);
+  font-size: 18px;
+  font-weight: 300;
+  max-width: 327px;
+  max-height: 543px;
+
+  .card__image{
+    border-radius: 8px;
+    position: relative;
+
+    .overlay{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: cyan;
+      opacity: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+      border-radius: 8px;
+    }
+
+    img {
+      max-inline-size: 100%;
+      block-size: auto;
+      border-radius: 8px;
+    }
+
+    &:hover{
+      .overlay{
+        opacity: 0.5; /* Se muestra al hacer hover */
+        visibility: visible;
+        cursor: pointer;
+      }
+    }
+  } 
+
+  .card__details{
+    border-bottom: 1px solid var(--color-line);
+    padding-bottom: 12px;
+
+    h2{
+      color: var(--color-White);
+      font-weight: 600;
+    }
+
+    div{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 15px;
+
+      .time{
+        font-weight: 400;
+
+        &::before{
+          content: url(./images/icon-clock.svg);
+          margin-right: var(--spacing-tiny);
+          float: left;
+        }
+      }
+
+
+      .eth{
+        color: #00FFF8;
+        font-weight:600;
+        
+        &::before{
+          content: url(./images/icon-ethereum.svg);
+          margin-right: var(--spacing-tiny);
+          float: left;
+        }
+      }
+    }
+  }
+
+  .card__author{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-med);
+
+    .name{
+      color: var(--color-White);
+    }
+  }
+}
+
+@media (min-width: 500px){
+  main{
+    display: grid;
+    place-items: center;
+  }
+
+  .card{
+    margin: 0;
+    max-width: 350px;
+    max-height: 596px;
+  }
+}
